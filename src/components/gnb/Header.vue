@@ -1,22 +1,35 @@
 <template>
   <header>
-    <p>Header</p>
-    <nav>
-      <ul>
-        <li>
-          <router-link to="/">홈</router-link>
-        </li>
-        <li>
-          <router-link to="/my-page">테스트</router-link>
-        </li>
-      </ul>
-    </nav>
+    <component :is="componentName"/>
   </header>
 </template>
 
 <script>
+import MainHeader from '@/components/common/MainHeader';
+import SubHeader from '@/components/common/SubHeader';
 export default {
-  name: "Header"
+  name: "Header",
+  components: {
+    MainHeader,
+    SubHeader
+  },
+  data() {
+    return {
+      componentName: '',
+    }
+  },
+  created() {
+    this.getHeaderComponent();
+  },
+  methods: {
+    getHeaderComponent() {
+      const current = this.$route.name;
+      const SubHeaderList = ['ProductDetail', 'ProductForm'];
+      if (SubHeaderList.includes(current)) {
+        this.componentName = 'SubHeader';
+      } else this.componentName = 'MainHeader';
+    }
+  }
 }
 </script>
 

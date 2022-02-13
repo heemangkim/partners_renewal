@@ -25,13 +25,34 @@ const paths = [
     ]
   },
   {
-    path: '/my-page',
+    path: '/my',
     component: MainLayout,
     children: [
       {
         name: 'MyPageView',
         path: '/',
         component: () => import('@/views/myPage/view')
+      },
+    ]
+  },
+  {
+    path: '/product',
+    component: MainLayout,
+    children: [
+      {
+        name: 'ProductList',
+        path: '',
+        component: () => import('@/views/product/list')
+      },
+      {
+        name: 'ProductDetail',
+        path: '/product/detail',
+        component: () => import('@/views/product/detail')
+      },
+      {
+        name: 'ProductForm',
+        path: '/product/new',
+        component: () => import('@/views/product/form')
       },
     ]
   },
