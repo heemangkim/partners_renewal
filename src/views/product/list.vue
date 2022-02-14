@@ -2,7 +2,9 @@
   <div class="pdt_list_wrap">
     <div class="pdt_list__category">
       <ul>
-        <li v-for="item in categoryList" :key="item.code">{{item.text}}</li>
+        <li v-for="item in categoryList" :key="item.code">
+          <a href="">{{item.text}}</a>
+        </li>
       </ul>
     </div>
     <div class="pdt_list__items">
